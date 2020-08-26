@@ -12,6 +12,7 @@ node {
      }
    }
    stage('docker build/push') {
+     checkout scm
      docker.withRegistry('https://quay.io/repository/', 'f0a4505c-9429-4517-a5d1-f560e9854d1c') {
        def app = docker.build("jad_haj/docker-nodejs-demo:${commit_id}", '.').push()
      }
